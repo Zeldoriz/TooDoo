@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Go-Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital@1&family=Nanum+Pen+Script&family=Open+Sans&family=Poppins:wght@200&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="header">
+        <p>Get your doodoo life together with...</p>
+        <h1>TooDoo</h1>
+    </div>
+
+    <div id="flex-container">
+        <div id="list">
+            <div class="date">
+                <p><%-date%></p>
+            </div>
+            <div class="submit">
+                <form action="/submit" method="POST">
+                    <textarea name="additem" maxlength="42" autofocus id="textarea"
+                        placeholder="Stop procrastinating..." required></textarea>
+                    <input class="submitButton" type="image" src="/images/plus-icon.png" width="40px" height="40px">
+                </form>
+            </div>
+            <div id="flex-container-list">
+                <div class="list-items">
+                    <ul style="list-style: none; margin-left: -20px;">
+                        <%items.forEach(function(items) {%>
+                        <li>
+                            <form action="/delete" method="post">
+                                <input type="checkbox" name="check" value="<%=items%>" onchange="this.form.submit()">
+                                <%=items%>
+                            </form>
+                        </li>
+                        <%})%>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
